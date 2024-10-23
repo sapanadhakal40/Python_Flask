@@ -32,8 +32,6 @@ def index():
     name=session.get('name')
     return render_template('index.html', form=form, name=name)
     
- 
-
 
 if __name__ == '__main__':
     app.run(debug=True)
