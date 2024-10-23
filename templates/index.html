@@ -1,0 +1,27 @@
+{% extends "base.html" %}
+{% import "bootstrap/wtf.html" as wtf %}
+
+{% block title %}Flasky{% endblock %}
+
+{% block page_content %}
+<div class="page-header">
+    <h1>Hello, {% if name %}{{ name }}{% else %}Stranger{% endif %}!</h1>
+</div>
+
+<form method="POST" action="{{ url_for('index') }}">
+{{ form.hidden_tag() }}
+<div class="form-group">
+    {{ form.name.label(class="form-label") }}
+    {{ form.name(class="form-control") }}
+</div>
+<div class="form-group">
+    {{ form.submit(class="btn btn-custom") }}
+</div>
+<!-- {{ wtf.quick_form(form) }} -->
+</form>
+
+{% for message in get_flashed_messages() %}
+    <div class="alert alert-success">{{ message }}</div>
+{% endfor %}
+{% endblock %}
+
